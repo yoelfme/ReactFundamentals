@@ -4,6 +4,9 @@
   "description": "A basic course about Reactjs",
   "main": "index.js",
   "devDependencies": {
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-react": "^6.11.1",
     "coffee-loader": "^0.7.2",
     "html-webpack-plugin": "^2.22.0",
     "webpack": "^1.13.2"
