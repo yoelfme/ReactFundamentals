@@ -1,0 +1,31 @@
+{
+  "name": "react-fundamentals",
+  "version": "1.0.0",
+  "description": "A basic course about Reactjs",
+  "main": "index.js",
+  "devDependencies": {
+    "coffee-loader": "^0.7.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yoelfme/ReactFundamentals.git"
+  },
+  "keywords": [
+    "webpack",
+    "react",
+    "componenets",
+    "js",
+    "javascript",
+    "react",
+    "fundamentals"
+  ],
+  "author": "Yoel Monzon",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yoelfme/ReactFundamentals/issues"
+  },
+  "homepage": "https://github.com/yoelfme/ReactFundamentals#readme"
+}
