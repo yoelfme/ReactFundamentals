@@ -4,10 +4,12 @@
   "description": "A basic course about Reactjs",
   "main": "index.js",
   "devDependencies": {
-    "coffee-loader": "^0.7.2"
+    "coffee-loader": "^0.7.2",
+    "html-webpack-plugin": "^2.22.0",
+    "webpack": "^1.13.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "ava 'app/**/*.test.js' --verbose --require ./other/setup-ava-tests.js"
   },
   "repository": {
     "type": "git",
