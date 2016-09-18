@@ -9,9 +9,12 @@
     "babel-preset-react": "^6.11.1",
     "coffee-loader": "^0.7.2",
     "html-webpack-plugin": "^2.22.0",
-    "webpack": "^1.13.2"
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.16.0"
   },
   "scripts": {
+    "production": "webpack -p",
+    "start": "webpack-dev-server",
     "test": "ava 'app/**/*.test.js' --verbose --require ./other/setup-ava-tests.js"
   },
   "repository": {
@@ -32,5 +35,9 @@
   "bugs": {
     "url": "https://github.com/yoelfme/ReactFundamentals/issues"
   },
-  "homepage": "https://github.com/yoelfme/ReactFundamentals#readme"
+  "homepage": "https://github.com/yoelfme/ReactFundamentals#readme",
+  "dependencies": {
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1"
+  }
 }
