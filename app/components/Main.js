@@ -5,7 +5,7 @@ import React from 'react'
 export default React.createClass({
   render () {
     return (
-      <div clasName='main-container'>
+      <div className='main-container'>
         {this.props.children}
       </div>
     )
