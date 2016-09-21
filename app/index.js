@@ -2,49 +2,24 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
+import Raven from 'raven-js'
+import routes from './config/routes'
 
-const USER_DATA = {
-  name: 'Yoel Monzon',
-  username: 'yoelfme',
-  image: 'https://avatars3.githubusercontent.com/u/4493680?v=3&s=466'
+const sentryKey = '5efb89ff18f54a54ab662b76de8cf6d9'
+const sentryApp = '100413'
+const sentryURL = `https://${sentryKey}@sentry.io/${sentryApp}`
+
+const _APP_INFO = {
+  name: 'Github Battle',
+  branch: 'video4',
+  version: '1.0'
 }
 
-const ProfilePic = React.createClass({
-  render () {
-    return <img src={this.props.imageUrl} style={{height: 100, width: 100}} />
+Raven.config(sentryURL, {
+  release: _APP_INFO.version,
+  tags: {
+    branch: _APP_INFO.branch
   }
-})
+}).install()
 
-const ProfileLink = React.createClass({
-  render () {
-    return (
-      <div>
-        <a href={`https://www.github.com/${this.props.username}`} target='_blank'>
-          {this.props.username}
-        </a>
-      </div>
-    )
-  }
-})
-
-const ProfileName = React.createClass({
-  render () {
-    return (
-      <div>{this.props.name}</div>
-    )
-  }
-})
-
-const Avatar = React.createClass({
-  render () {
-    return (
-      <div>
-        <ProfilePic imageUrl={this.props.user.image} />
-        <ProfileName name={this.props.user.name} />
-        <ProfileLink username={this.props.user.username} />
-      </div>
-    )
-  }
-})
-
-ReactDOM.render(<Avatar user={USER_DATA} />, document.getElementById('app'))
+ReactDOM.render(routes, document.getElementById('app'))
