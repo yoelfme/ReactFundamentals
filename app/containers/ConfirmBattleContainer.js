@@ -11,7 +11,7 @@ const ConfirmBattleContainer = React.createClass({
   getInitialState () {
     return {
       isLoading: true,
-      playerInfo: []
+      playersInfo: []
     }
   },
   componentDidMount () {
@@ -25,10 +25,19 @@ const ConfirmBattleContainer = React.createClass({
         })
       })
   },
+  handleInitiateBattle () {
+    this.context.router.push({
+      pathname: '/results',
+      state: {
+        playersInfo: this.state.playersInfo
+      }
+    })
+  },
   render () {
     return (
       <ConfirmBattle
         isLoading={this.state.isLoading}
+        onInitiateBattle={this.handleInitiateBattle}
         playersInfo={this.state.playersInfo} />
     )
   }
