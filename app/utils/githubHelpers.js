@@ -10,6 +10,34 @@ const getUserInfo = (username) => {
   return axios.get(`https://api.github.com/users/${username}${params}`)
 }
 
+const getRepos = (username) => {
+  return axios.get(`https://api.github.com/users/${username}/repos${params}&per_page=100`)
+}
+
+const getTotalStarts = (repos) => {
+  return repos.data.reduce((prev, current) => {
+    return prev + current.stargazers_count
+  }, 0)
+}
+
+const getPlayersData = (player) => {
+  return getRepos(player.login)
+    .then(getTotalStarts)
+    .then(totalStars => {
+      return {
+        followers: player.followers,
+        totalStars
+      }
+    })
+}
+
+const calculateScores = (players) => {
+  return [
+    players[0].followers * 3 + players[0].totalStars,
+    players[1].followers * 3 + players[1].totalStars
+  ]
+}
+
 const helpers = {
   getPlayersInfo (players) {
     return axios.all(players.map(username => {
@@ -19,8 +47,18 @@ const helpers = {
         return user.data
       })
     }).catch(err => {
-      console.warn('Err in getPlayersInfo', err)
+      console.warn('Error in getPlayersInfo: ', err)
     })
+  },
+  battle: (players) => {
+    const playerOneData = getPlayersData(players[0])
+    const playerTwoData = getPlayersData(players[1])
+
+    return axios.all([playerOneData, playerTwoData])
+      .then(calculateScores)
+      .catch(err => {
+        console.warn('Error in battle:', err)
+      })
   }
 }
 
