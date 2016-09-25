@@ -5,9 +5,7 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router'
 
 import Main from '../components/Main'
 import Home from '../components/Home'
-import PromptContainer from '../containers/PromptContainer'
-import ConfirmBattleContainer from '../containers/ConfirmBattleContainer'
-import ResultsContainer from '../containers/ResultsContainer'
+import { PromptContainer, ConfirmBattleContainer, ResultsContainer } from '../containers'
 
 const routes = (
   <Router history={hashHistory}>

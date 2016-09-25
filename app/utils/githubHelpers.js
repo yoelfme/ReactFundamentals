@@ -23,12 +23,7 @@ const getTotalStarts = (repos) => {
 const getPlayersData = (player) => {
   return getRepos(player.login)
     .then(getTotalStarts)
-    .then(totalStars => {
-      return {
-        followers: player.followers,
-        totalStars
-      }
-    })
+    .then(totalStars => ({ followers: player.followers, totalStars }))
 }
 
 const calculateScores = (players) => {

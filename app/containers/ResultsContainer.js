@@ -12,7 +12,6 @@ const ResultsContainer = React.createClass({
     }
   },
   componentDidMount () {
-    console.log(this.props.location.state.playersInfo)
     githubHelpers.battle(this.props.location.state.playersInfo)
       .then(scores => {
         this.setState({

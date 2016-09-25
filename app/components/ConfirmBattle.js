@@ -6,17 +6,15 @@ import { Link } from 'react-router'
 import Styles from '../styles'
 import UserDetails from './UserDetails'
 import UserDetailsWrapper from './UserDetailsWrapper'
+import MainContainer from './MainContainer'
+import Loading from './Loading'
 
 const { bool, func, array } = React.PropTypes
 
-const puke = (object) => {
-  return <pre>{JSON.stringify(object, null, ' ')}</pre>
-}
-
 const ConfirmBattle = (props) => {
   return props.isLoading === true
-    ? <p>Loading...</p>
-    : <div className='jumbotron col-sm-12 text-center' style={Styles.transparentBg}>
+    ? <Loading text='Waiting' speed={800} />
+    : <MainContainer>
         <h1>Confirm Players</h1>
         <div className='col-sm-8 col-sm-offset-2'>
           <UserDetailsWrapper header='Player 1'>
@@ -38,7 +36,7 @@ const ConfirmBattle = (props) => {
             </Link>
           </div>
         </div>
-      </div>
+      </MainContainer>
 }
 
 ConfirmBattle.propTypes = {
