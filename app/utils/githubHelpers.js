@@ -1,6 +1,7 @@
 'use strict'
 
 import axios from 'axios'
+import logCustomMessage from './logCustomMessage'
 
 const id = 'YOUR_CLIENT_ID'
 const secret = 'YOUR_SECRET_ID'
@@ -41,8 +42,11 @@ const helpers = {
       return info.map(user => {
         return user.data
       })
-    }).catch(err => {
-      console.warn('Error in getPlayersInfo: ', err)
+    }).catch(error => {
+      logCustomMessage(error.response.statusText, {
+        players,
+        error
+      })
     })
   },
   battle: (players) => {
@@ -51,8 +55,11 @@ const helpers = {
 
     return axios.all([playerOneData, playerTwoData])
       .then(calculateScores)
-      .catch(err => {
-        console.warn('Error in battle:', err)
+      .catch(error => {
+        logCustomMessage(error.response.statusText, {
+          players,
+          error
+        })
       })
   }
 }

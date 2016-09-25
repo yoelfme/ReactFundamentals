@@ -42,7 +42,6 @@ const Loading = React.createClass({
     const stopper = `${this.originalText}...`
 
     this.interval = setInterval(() => {
-      console.log(this.state.text)
       if (this.state.text === stopper) {
         this.setState({
           text: this.originalText
